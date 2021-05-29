@@ -49,13 +49,13 @@ var validateUrl = require('valid-url');
       }
 
       await res.status(200).sendFile(filteredimage, {}, (err) => {
-        if (err) { return res.status(500).send(`Error while trying process the image`); }
+        if (err) { return res.status(422).send(`Error while trying process the image`); }
 
 
         deleteLocalFiles([filteredimage])
       });
     } catch (err) {
-      res.status(500).send(`Error while trying to get, process and send the image`);
+      res.status(500).send(`Error while trying to get, process or send the image`);
     }
   });
   //! END @TODO1
